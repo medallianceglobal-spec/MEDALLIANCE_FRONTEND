@@ -377,7 +377,7 @@ const VendorDetailsPage = () => {
                 </div>
               )}
 
-              {/* Location Map Placeholder */}
+              {/* Location Map Paceholder */}
               <div className="bg-card rounded-2xl p-6">
                 <h3 className="font-bold mb-4">Location</h3>
                 <div className="aspect-video rounded-xl bg-muted flex items-center justify-center">

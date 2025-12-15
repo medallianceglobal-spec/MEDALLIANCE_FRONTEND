@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Search, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { isAuthenticated, logout } = useAuth();
 
   const navLinks = [
@@ -24,16 +26,16 @@ const Navbar = () => {
   ];
 
   const isActive = (path: string) => location.pathname === path;
-
+  console.log(isAuthenticated)
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img 
-              src={logo} 
-              alt="MedAlliance Global" 
+            <img
+              src={logo}
+              alt="MedAlliance Global"
               className="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
@@ -44,11 +46,10 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative font-medium transition-all duration-300 hover:text-primary ${
-                  isActive(link.path) 
-                    ? 'text-primary' 
+                className={`relative font-medium transition-all duration-300 hover:text-primary ${isActive(link.path)
+                    ? 'text-primary'
                     : 'text-foreground/80'
-                }`}
+                  }`}
               >
                 {link.name}
                 {isActive(link.path) && (
@@ -58,7 +59,7 @@ const Navbar = () => {
             ))}
 
             {/* Dropdown for Business Actions */}
-            <div 
+            <div
               className="relative"
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
@@ -67,9 +68,9 @@ const Navbar = () => {
                 For Business
                 <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${showDropdown ? 'rotate-180' : ''}`} />
               </button>
-              
+
               {showDropdown && (
-                <div className="absolute top-full left-0 mt-2 w-56 py-2 glass rounded-xl shadow-card animate-fade-in">
+                <div className="absolute top-full left-0 w-56 py-2 glass rounded-xl shadow-card animate-fade-in">
                   {actionLinks.map((link) => (
                     <Link
                       key={link.path}
@@ -86,21 +87,22 @@ const Navbar = () => {
 
           {/* Search and Auth */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="text-foreground/70">
+            {/* <Button variant="ghost" size="icon" className="text-foreground/70">
               <Search className="h-5 w-5" />
-            </Button>
-            
-            {isAuthenticated ? (
-              <Button variant="outline" onClick={logout}>
+            </Button> */}
+
+            {isAuthenticated && (
+              <Button
+                variant="outline"
+                onClick={() => {
+                  logout();
+                  navigate("/signup");
+                }}
+              >
                 Sign Out
               </Button>
-            ) : (
-              <Link to="/auth">
-                <Button variant="hero">
-                  Get Started
-                </Button>
-              </Link>
             )}
+
           </div>
 
           {/* Mobile Menu Button */}
@@ -121,11 +123,10 @@ const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 rounded-xl font-medium transition-all ${
-                    isActive(link.path)
+                  className={`px-4 py-3 rounded-xl font-medium transition-all ${isActive(link.path)
                       ? 'bg-primary/10 text-primary'
                       : 'text-foreground/80 hover:bg-muted'
-                  }`}
+                    }`}
                 >
                   {link.name}
                 </Link>
@@ -142,17 +143,17 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="h-px bg-border my-2" />
-              {isAuthenticated ? (
-                <Button variant="outline" onClick={() => { logout(); setIsOpen(false); }} className="mx-4">
-                  Sign Out
-                </Button>
-              ) : (
-                <Link to="/auth" onClick={() => setIsOpen(false)} className="mx-4">
-                  <Button variant="hero" className="w-full">
-                    Get Started
-                  </Button>
-                </Link>
-              )}
+               {isAuthenticated && (
+              <Button
+                variant="outline"
+                onClick={() => {
+                  logout();
+                  navigate("/signup");
+                }}
+              >
+                Sign Out
+              </Button>
+            )}
             </div>
           </div>
         )}

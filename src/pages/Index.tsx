@@ -13,12 +13,6 @@ const categories = [
   { name: 'Healthcare IT', icon: Globe, count: '900+' },
 ];
 
-const stats = [
-  { number: '50,000+', label: 'Healthcare Vendors', icon: Building2 },
-  { number: '120+', label: 'Countries', icon: Globe },
-  { number: '1M+', label: 'Monthly Searches', icon: Search },
-  { number: '99.9%', label: 'Uptime', icon: Zap },
-];
 
 const featuredVendors = [
   {
@@ -54,31 +48,64 @@ const featuredVendors = [
     isPremium: false,
     isAccredited: true,
   },
+  {
+    id: 4,
+    name: 'Global Pharma Corp',
+    description: 'Leading pharmaceutical distributor with worldwide network',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400',
+    rating: 4.7,
+    reviews: 1456,
+    location: 'Singapore',
+    isPremium: false,
+    isAccredited: true,
+  },
+  {
+    id: 5,
+    name: 'Global Pharma Corp',
+    description: 'Leading pharmaceutical distributor with worldwide network',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400',
+    rating: 4.7,
+    reviews: 1456,
+    location: 'Singapore',
+    isPremium: false,
+    isAccredited: true,
+  },
+  {
+    id: 6,
+    name: 'Global Pharma Corp',
+    description: 'Leading pharmaceutical distributor with worldwide network',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400',
+    rating: 4.7,
+    reviews: 1456,
+    location: 'Singapore',
+    isPremium: false,
+    isAccredited: true,
+  },
+  {
+    id: 7,
+    name: 'Global Pharma Corp',
+    description: 'Leading pharmaceutical distributor with worldwide network',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400',
+    rating: 4.7,
+    reviews: 1456,
+    location: 'Singapore',
+    isPremium: false,
+    isAccredited: true,
+  },
+  {
+    id: 8,
+    name: 'Global Pharma Corp',
+    description: 'Leading pharmaceutical distributor with worldwide network',
+    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400',
+    rating: 4.7,
+    reviews: 1456,
+    location: 'Singapore',
+    isPremium: false,
+    isAccredited: true,
+  },
 ];
 
-const testimonials = [
-  {
-    name: 'Dr. Sarah Johnson',
-    role: 'Chief Medical Officer',
-    company: 'Metro Healthcare',
-    content: 'MedAlliance Global has transformed how we source medical equipment. The verification process gives us confidence in every vendor.',
-    image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100',
-  },
-  {
-    name: 'James Chen',
-    role: 'Procurement Director',
-    company: 'Pacific Medical Group',
-    content: 'The platform saved us countless hours finding reliable healthcare vendors. The accreditation system is invaluable.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100',
-  },
-  {
-    name: 'Dr. Priya Sharma',
-    role: 'Hospital Administrator',
-    company: 'Unity Hospital',
-    content: 'Best healthcare directory we have used. The detailed vendor profiles and reviews helped us make informed decisions.',
-    image: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=100',
-  },
-];
+
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -152,7 +179,7 @@ const Index = () => {
 
             {/* Quick Links */}
             <div className="flex flex-wrap justify-center gap-3 mt-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <span className="text-white/60 text-sm">Popular:</span>
+              <span className="text-white/60 text-sm mt-2">Popular:</span>
               {['Hospitals', 'Diagnostic Labs', 'Pharmacies', 'Medical Equipment'].map((item) => (
                 <Link
                   key={item}
@@ -161,34 +188,6 @@ const Index = () => {
                 >
                   {item}
                 </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
-            <div className="w-1 h-2 bg-white/60 rounded-full animate-pulse" />
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-background relative -mt-20 z-20">
-        <div className="container mx-auto px-4">
-          <div className="glass rounded-3xl p-8 md:p-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div 
-                  key={stat.label} 
-                  className="text-center animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <stat.icon className="h-8 w-8 mx-auto mb-3 text-primary" />
-                  <div className="text-3xl md:text-4xl font-bold gradient-text mb-1">{stat.number}</div>
-                  <div className="text-muted-foreground text-sm">{stat.label}</div>
-                </div>
               ))}
             </div>
           </div>
@@ -246,7 +245,7 @@ const Index = () => {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {featuredVendors.map((vendor, index) => (
               <Link
                 key={vendor.id}
@@ -293,95 +292,6 @@ const Index = () => {
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Choose MedAlliance Global?
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              We provide the most comprehensive and trusted healthcare vendor directory in the world
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: Shield,
-                title: 'Verified Vendors',
-                description: 'Every vendor undergoes rigorous verification and accreditation process',
-              },
-              {
-                icon: Globe,
-                title: 'Global Network',
-                description: 'Access healthcare partners across 120+ countries worldwide',
-              },
-              {
-                icon: TrendingUp,
-                title: 'Real Reviews',
-                description: 'Authentic reviews from verified healthcare professionals',
-              },
-              {
-                icon: Users,
-                title: 'Expert Support',
-                description: '24/7 dedicated support team to help you find the right partners',
-              },
-            ].map((feature, index) => (
-              <div
-                key={feature.title}
-                className="text-center p-6 rounded-2xl hover:bg-muted/50 transition-colors duration-300 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <feature.icon className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="font-bold text-lg text-foreground mb-3">{feature.title}</h3>
-                <p className="text-muted-foreground text-sm">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 bg-navy text-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Trusted by Healthcare Leaders
-            </h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
-              See what healthcare professionals say about MedAlliance Global
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={testimonial.name}
-                className="p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <p className="text-white/90 mb-6 leading-relaxed">"{testimonial.content}"</p>
-                <div className="flex items-center gap-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-white/60 text-sm">{testimonial.role}</div>
-                    <div className="text-primary text-sm">{testimonial.company}</div>
-                  </div>
-                </div>
-              </div>
             ))}
           </div>
         </div>

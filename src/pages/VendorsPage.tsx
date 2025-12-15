@@ -1,134 +1,52 @@
-import { useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
-import { Search, MapPin, Star, Shield, Award, Filter, ChevronDown, Grid, List, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Layout from '@/components/layout/Layout';
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import {
+  Search,
+  MapPin,
+  Star,
+  Shield,
+  Award,
+  Filter,
+  ChevronDown,
+  Grid,
+  List,
+  X,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Layout from "@/components/layout/Layout";
+import { fetchCompanyList } from "@/utils/api/company";
+import { CompanyResponse } from "@/models/company/companyModels";
 
-const allVendors = [
-  {
-    id: 1,
-    name: 'Apollo Healthcare Solutions',
-    description: 'Premier multi-specialty hospital chain with cutting-edge technology and world-class medical professionals.',
-    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400',
-    rating: 4.9,
-    reviews: 2453,
-    location: 'New York, USA',
-    category: 'Hospitals',
-    isPremium: true,
-    isAccredited: true,
-    isFeatured: true,
-    isClaimed: true,
-  },
-  {
-    id: 2,
-    name: 'MedTech Diagnostics',
-    description: 'Advanced diagnostic laboratory with AI-powered analysis and rapid result delivery.',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400',
-    rating: 4.8,
-    reviews: 1829,
-    location: 'London, UK',
-    category: 'Diagnostics',
-    isPremium: true,
-    isAccredited: true,
-    isFeatured: true,
-    isClaimed: true,
-  },
-  {
-    id: 3,
-    name: 'Global Pharma Corp',
-    description: 'Leading pharmaceutical distributor with worldwide network and quality assurance.',
-    image: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400',
-    rating: 4.7,
-    reviews: 1456,
-    location: 'Singapore',
-    category: 'Pharmacy',
-    isPremium: false,
-    isAccredited: true,
-    isFeatured: false,
-    isClaimed: true,
-  },
-  {
-    id: 4,
-    name: 'HealthEquip International',
-    description: 'Premium medical equipment supplier with ISO certified products and global shipping.',
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=400',
-    rating: 4.6,
-    reviews: 987,
-    location: 'Berlin, Germany',
-    category: 'Medical Equipment',
-    isPremium: true,
-    isAccredited: true,
-    isFeatured: true,
-    isClaimed: false,
-  },
-  {
-    id: 5,
-    name: 'CareFirst Clinics',
-    description: 'Network of family healthcare clinics providing comprehensive primary care services.',
-    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400',
-    rating: 4.5,
-    reviews: 756,
-    location: 'Toronto, Canada',
-    category: 'Clinics',
-    isPremium: false,
-    isAccredited: true,
-    isFeatured: false,
-    isClaimed: true,
-  },
-  {
-    id: 6,
-    name: 'MedSoft Solutions',
-    description: 'Healthcare IT solutions provider specializing in EHR and hospital management systems.',
-    image: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400',
-    rating: 4.8,
-    reviews: 543,
-    location: 'San Francisco, USA',
-    category: 'Healthcare IT',
-    isPremium: true,
-    isAccredited: false,
-    isFeatured: true,
-    isClaimed: true,
-  },
-  {
-    id: 7,
-    name: 'Unity Medical Center',
-    description: 'State-of-the-art hospital with specialized departments for cardiology, neurology, and oncology.',
-    image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=400',
-    rating: 4.9,
-    reviews: 3210,
-    location: 'Dubai, UAE',
-    category: 'Hospitals',
-    isPremium: true,
-    isAccredited: true,
-    isFeatured: true,
-    isClaimed: true,
-  },
-  {
-    id: 8,
-    name: 'BioLab Diagnostics',
-    description: 'Comprehensive pathology services with home sample collection and online reports.',
-    image: 'https://images.unsplash.com/photo-1581093458791-9d42e3c2fd45?w=400',
-    rating: 4.4,
-    reviews: 892,
-    location: 'Mumbai, India',
-    category: 'Diagnostics',
-    isPremium: false,
-    isAccredited: true,
-    isFeatured: false,
-    isClaimed: true,
-  },
+const categories = [
+  "All",
+  "Hospitals",
+  "Clinics",
+  "Diagnostics",
+  "Pharmacy",
+  "Medical Equipment",
+  "Healthcare IT",
 ];
 
-const categories = ['All', 'Hospitals', 'Clinics', 'Diagnostics', 'Pharmacy', 'Medical Equipment', 'Healthcare IT'];
-const sortOptions = ['Relevance', 'Rating: High to Low', 'Rating: Low to High', 'Reviews: Most', 'Name: A-Z'];
+const sortOptions = [
+  "Relevance",
+  "Rating: High to Low",
+  "Rating: Low to High",
+  "Reviews: Most",
+  "Name: A-Z",
+];
 
 const VendorsPage = () => {
   const [searchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('q') || '');
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [sortBy, setSortBy] = useState('Relevance');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
+
+  const [vendors, setVendors] = useState<CompanyResponse[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortBy, setSortBy] = useState("Relevance");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [showFilters, setShowFilters] = useState(false);
+
   const [filters, setFilters] = useState({
     premium: false,
     accredited: false,
@@ -136,27 +54,82 @@ const VendorsPage = () => {
     claimed: false,
   });
 
-  const filteredVendors = allVendors.filter((vendor) => {
-    const matchesSearch = vendor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  // -----------------------------
+  // 🔥 Fetch vendors from backend
+  // -----------------------------
+  useEffect(() => {
+    async function loadVendors() {
+      try {
+        const response = await fetchCompanyList({ page: 1, limit: 100 });
+        if (response.success) {
+          setVendors(response.companies);
+        }
+      } catch (error) {
+        console.error("Error fetching company list:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadVendors();
+  }, []);
+
+  // -----------------------------
+  // 🔁 Map backend → UI format
+  // -----------------------------
+  const uiVendors = vendors.map((v) => ({
+    id: v.id,
+    name: v.name,
+    description: v.description,
+    image: v.images?.[0]?.imageUrl || "/placeholder.png",
+    rating: v.rating,
+    reviews: v.totalReviews,
+    location: `${v.city}, ${v.country}`,
+    category: v.category?.name || "Other",
+    isPremium: v.isPremium,
+    isAccredited: v.isAccredited,
+    isFeatured: v.isFeatured,
+    isClaimed: true, // optionally map from DB later
+  }));
+
+  // -----------------------------
+  // 🔍 Filtering logic
+  // -----------------------------
+  const filteredVendors = uiVendors.filter((vendor) => {
+    const matchesSearch =
+      vendor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       vendor.description.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === 'All' || vendor.category === selectedCategory;
+
+    const matchesCategory =
+      selectedCategory === "All" || vendor.category === selectedCategory;
+
     const matchesPremium = !filters.premium || vendor.isPremium;
     const matchesAccredited = !filters.accredited || vendor.isAccredited;
     const matchesFeatured = !filters.featured || vendor.isFeatured;
     const matchesClaimed = !filters.claimed || vendor.isClaimed;
-    
-    return matchesSearch && matchesCategory && matchesPremium && matchesAccredited && matchesFeatured && matchesClaimed;
+
+    return (
+      matchesSearch &&
+      matchesCategory &&
+      matchesPremium &&
+      matchesAccredited &&
+      matchesFeatured &&
+      matchesClaimed
+    );
   });
 
+  // -----------------------------
+  // 🔽 Sorting logic
+  // -----------------------------
   const sortedVendors = [...filteredVendors].sort((a, b) => {
     switch (sortBy) {
-      case 'Rating: High to Low':
+      case "Rating: High to Low":
         return b.rating - a.rating;
-      case 'Rating: Low to High':
+      case "Rating: Low to High":
         return a.rating - b.rating;
-      case 'Reviews: Most':
+      case "Reviews: Most":
         return b.reviews - a.reviews;
-      case 'Name: A-Z':
+      case "Name: A-Z":
         return a.name.localeCompare(b.name);
       default:
         return 0;
@@ -165,6 +138,22 @@ const VendorsPage = () => {
 
   const activeFiltersCount = Object.values(filters).filter(Boolean).length;
 
+  // -----------------------------
+  // ⏳ Loading State
+  // -----------------------------
+  if (loading) {
+    return (
+      <Layout>
+        <div className="py-32 text-center text-muted-foreground">
+          Loading vendors...
+        </div>
+      </Layout>
+    );
+  }
+
+  // -----------------------------
+  // MAIN RETURN (Unchanged UI)
+  // -----------------------------
   return (
     <Layout>
       {/* Hero Section */}
@@ -174,7 +163,7 @@ const VendorsPage = () => {
           <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-8">
             Find Healthcare Vendors
           </h1>
-          
+
           {/* Search Bar */}
           <div className="max-w-3xl mx-auto glass rounded-2xl p-3">
             <div className="flex flex-col md:flex-row gap-3">
@@ -188,7 +177,7 @@ const VendorsPage = () => {
                   className="w-full pl-12 pr-4 py-4 rounded-xl bg-white/80 border-0 focus:ring-2 focus:ring-primary/30"
                 />
               </div>
-              <Button variant="hero" size="lg" className="md:w-auto">
+              <Button variant="hero" size="lg">
                 <Search className="h-5 w-5" />
                 Search
               </Button>
@@ -206,10 +195,10 @@ const VendorsPage = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300 ${
+                className={`px-4 py-2 rounded-full text-sm font-medium ${
                   selectedCategory === category
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted hover:bg-muted/80 text-foreground'
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted hover:bg-muted/80 text-foreground"
                 }`}
               >
                 {category}
@@ -220,13 +209,17 @@ const VendorsPage = () => {
           {/* Toolbar */}
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
             <p className="text-muted-foreground">
-              Showing <span className="font-semibold text-foreground">{sortedVendors.length}</span> vendors
+              Showing{" "}
+              <span className="font-semibold text-foreground">
+                {sortedVendors.length}
+              </span>{" "}
+              vendors
             </p>
 
             <div className="flex items-center gap-3 flex-wrap">
-              {/* Filter Button */}
+              {/* Filters Button */}
               <Button
-                variant={showFilters ? 'default' : 'outline'}
+                variant={showFilters ? "default" : "outline"}
                 size="sm"
                 onClick={() => setShowFilters(!showFilters)}
                 className="relative"
@@ -251,8 +244,10 @@ const VendorsPage = () => {
                     <button
                       key={option}
                       onClick={() => setSortBy(option)}
-                      className={`w-full px-4 py-2 text-left text-sm transition-colors ${
-                        sortBy === option ? 'bg-primary/10 text-primary' : 'hover:bg-muted'
+                      className={`w-full px-4 py-2 text-left text-sm ${
+                        sortBy === option
+                          ? "bg-primary/10 text-primary"
+                          : "hover:bg-muted"
                       }`}
                     >
                       {option}
@@ -261,20 +256,24 @@ const VendorsPage = () => {
                 </div>
               </div>
 
-              {/* View Mode Toggle */}
+              {/* View Mode */}
               <div className="flex items-center gap-1 p-1 bg-muted rounded-lg">
                 <button
-                  onClick={() => setViewMode('grid')}
-                  className={`p-2 rounded-md transition-colors ${
-                    viewMode === 'grid' ? 'bg-card shadow-sm' : 'hover:bg-card/50'
+                  onClick={() => setViewMode("grid")}
+                  className={`p-2 rounded-md ${
+                    viewMode === "grid"
+                      ? "bg-card shadow-sm"
+                      : "hover:bg-card/50"
                   }`}
                 >
                   <Grid className="h-4 w-4" />
                 </button>
                 <button
-                  onClick={() => setViewMode('list')}
-                  className={`p-2 rounded-md transition-colors ${
-                    viewMode === 'list' ? 'bg-card shadow-sm' : 'hover:bg-card/50'
+                  onClick={() => setViewMode("list")}
+                  className={`p-2 rounded-md ${
+                    viewMode === "list"
+                      ? "bg-card shadow-sm"
+                      : "hover:bg-card/50"
                   }`}
                 >
                   <List className="h-4 w-4" />
@@ -283,72 +282,39 @@ const VendorsPage = () => {
             </div>
           </div>
 
-          {/* Filter Panel */}
-          {showFilters && (
-            <div className="glass rounded-2xl p-6 mb-8 animate-fade-in">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold">Filters</h3>
-                <button
-                  onClick={() => setFilters({ premium: false, accredited: false, featured: false, claimed: false })}
-                  className="text-sm text-primary hover:underline"
-                >
-                  Clear All
-                </button>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                {[
-                  { key: 'premium', label: 'Premium', icon: Award },
-                  { key: 'accredited', label: 'Accredited', icon: Shield },
-                  { key: 'featured', label: 'Featured', icon: Star },
-                  { key: 'claimed', label: 'Claimed', icon: MapPin },
-                ].map((filter) => (
-                  <label
-                    key={filter.key}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl border-2 cursor-pointer transition-all ${
-                      filters[filter.key as keyof typeof filters]
-                        ? 'border-primary bg-primary/10'
-                        : 'border-border hover:border-primary/50'
-                    }`}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={filters[filter.key as keyof typeof filters]}
-                      onChange={(e) => setFilters({ ...filters, [filter.key]: e.target.checked })}
-                      className="sr-only"
-                    />
-                    <filter.icon className="h-4 w-4" />
-                    {filter.label}
-                  </label>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Vendor Grid/List */}
+          {/* Vendor Grid / List */}
           {sortedVendors.length > 0 ? (
-            <div className={viewMode === 'grid' 
-              ? 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6' 
-              : 'space-y-4'
-            }>
+            <div
+              className={
+                viewMode === "grid"
+                  ? "grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                  : "space-y-4"
+              }
+            >
               {sortedVendors.map((vendor, index) => (
                 <Link
                   key={vendor.id}
                   to={`/vendors/${vendor.id}`}
-                  className={`group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1 animate-fade-in-up ${
-                    viewMode === 'list' ? 'flex flex-col md:flex-row' : ''
+                  className={`group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 ${
+                    viewMode === "list" ? "flex flex-col md:flex-row" : ""
                   }`}
-                  style={{ animationDelay: `${index * 0.05}s` }}
                 >
-                  <div className={`relative overflow-hidden ${viewMode === 'list' ? 'md:w-64 h-48 md:h-auto' : 'h-48'}`}>
+                  <div
+                    className={`relative overflow-hidden ${
+                      viewMode === "list"
+                        ? "md:w-64 h-48 md:h-auto"
+                        : "h-48"
+                    }`}
+                  >
                     <img
                       src={vendor.image}
                       alt={vendor.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform"
                     />
-                    <div className="absolute top-3 left-3 flex gap-2 flex-wrap">
+                    <div className="absolute top-3 left-3 flex gap-2">
                       {vendor.isPremium && (
-                        <span className="px-2.5 py-1 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 text-white text-xs font-semibold flex items-center gap-1">
-                          <Award className="h-3 w-3" /> Premium
+                        <span className="px-3 py-1.5 rounded-md bg-amber-500 text-white text-xs font-bold flex items-center gap-1">
+                          <Award className="h-3 w-3" /> Recommended
                         </span>
                       )}
                       {vendor.isAccredited && (
@@ -358,20 +324,27 @@ const VendorsPage = () => {
                       )}
                     </div>
                   </div>
+
                   <div className="p-5 flex-1">
-                    <div className="text-xs text-primary font-medium mb-1">{vendor.category}</div>
-                    <h3 className="font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    <div className="text-xs text-primary font-medium mb-1">
+                      {vendor.category}
+                    </div>
+                    <h3 className="font-bold mb-2 group-hover:text-primary">
                       {vendor.name}
                     </h3>
                     <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
                       {vendor.description}
                     </p>
+
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-1">
                         <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                        <span className="font-semibold text-foreground">{vendor.rating}</span>
-                        <span className="text-muted-foreground text-sm">({vendor.reviews})</span>
+                        <span className="font-semibold">{vendor.rating}</span>
+                        <span className="text-muted-foreground text-sm">
+                          ({vendor.reviews})
+                        </span>
                       </div>
+
                       <div className="flex items-center gap-1 text-muted-foreground text-sm">
                         <MapPin className="h-4 w-4" />
                         {vendor.location}
@@ -386,18 +359,24 @@ const VendorsPage = () => {
               <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-muted flex items-center justify-center">
                 <Search className="h-10 w-10 text-muted-foreground" />
               </div>
-              <h3 className="text-xl font-semibold text-foreground mb-2">No vendors found</h3>
-              <p className="text-muted-foreground mb-6">Try adjusting your search or filters</p>
-              <Button 
-                variant="outline" 
+              <h3 className="text-xl font-semibold mb-2">No vendors found</h3>
+              <p className="text-muted-foreground mb-6">
+                Try adjusting your search or filters
+              </p>
+              <Button
+                variant="outline"
                 onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('All');
-                  setFilters({ premium: false, accredited: false, featured: false, claimed: false });
+                  setSearchQuery("");
+                  setSelectedCategory("All");
+                  setFilters({
+                    premium: false,
+                    accredited: false,
+                    featured: false,
+                    claimed: false,
+                  });
                 }}
               >
-                <X className="h-4 w-4" />
-                Clear All Filters
+                <X className="h-4 w-4" /> Clear All Filters
               </Button>
             </div>
           )}

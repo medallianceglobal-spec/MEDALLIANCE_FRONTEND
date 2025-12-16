@@ -8,6 +8,9 @@ import { useEffect, lazy, Suspense } from "react";
 
 import ProtectedRoute from "@/routes/ProtectedRoute";
 import PublicRoute from "@/routes/PublicRoute";
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+
 
 // Lazy load pages
 const Index = lazy(() => import("./pages/Index"));
@@ -28,6 +31,7 @@ function ScrollToTop() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    console.log(API_BASE_URL)
   }, [pathname]);
 
   return null;

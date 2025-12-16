@@ -135,6 +135,7 @@ export async function login(payload: LoginPayload): Promise<AuthResponse> {
 
 export async function googleLogin(idToken: string): Promise<AuthResponse> {
   const { data } = await api.post<AuthResponse>("/auth/google", { idToken });
+  console.log("GOOGLE LOGIN CALLED");
   localStorage.setItem("auth_token", data.token);
   return data;
 }

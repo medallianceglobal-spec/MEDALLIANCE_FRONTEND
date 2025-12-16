@@ -8,6 +8,7 @@ import { login, googleLogin } from "@/utils/api/auth";
 import { GoogleLogin, type CredentialResponse } from "@react-oauth/google";
 import logoFull from "@/assets/logo-full.png";
 
+
 /**
  * Colors pulled from your logo:
  * - mint  : #34E7C1

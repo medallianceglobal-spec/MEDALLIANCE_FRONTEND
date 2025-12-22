@@ -19,7 +19,6 @@ import {
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import BlogsPreview from "./BlogsPreview";
-// import herobanner from "@/assets/hero_banner.png";
 import { useState } from "react";
 
 /* ================= DATA ================= */
@@ -43,8 +42,6 @@ const featuredVendors = [
     rating: "4.9",
     reviews: "2453",
     location: "New York, USA",
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400",
   },
   {
     name: "MedTech Diagnostics",
@@ -53,8 +50,6 @@ const featuredVendors = [
     rating: "4.8",
     reviews: "1829",
     location: "London, UK",
-    image:
-      "https://images.unsplash.com/photo-1581594549595-35f6edc7b762?w=400",
   },
   {
     name: "Global Pharma Corp",
@@ -63,8 +58,6 @@ const featuredVendors = [
     rating: "4.7",
     reviews: "1456",
     location: "Singapore",
-    image:
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400",
   },
   {
     name: "HealthCare Plus",
@@ -73,8 +66,6 @@ const featuredVendors = [
     rating: "4.7",
     reviews: "1321",
     location: "Berlin, Germany",
-    image:
-      "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=400",
   },
   {
     name: "MediCare International",
@@ -83,8 +74,6 @@ const featuredVendors = [
     rating: "4.7",
     reviews: "1210",
     location: "Dubai, UAE",
-    image:
-      "https://images.unsplash.com/photo-1576602976047-174e57a47881?w=400",
   },
   {
     name: "Premier Health Group",
@@ -93,8 +82,6 @@ const featuredVendors = [
     rating: "4.6",
     reviews: "1180",
     location: "Toronto, Canada",
-    image:
-      "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400",
   },
 ];
 
@@ -134,27 +121,21 @@ const Index = () => {
   return (
     <Layout>
       {/* HERO */}
-      <section className="relative min-h-[90vh] flex items-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          {/* style={{ backgroundImage: `url(${herobanner})` }} */}
-        />
-        {/* <div className="absolute inset-0 bg-navy/70 backdrop-blur-sm" /> */}
-
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+      <section className="min-h-[90vh] flex items-center bg-background">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Find Trusted{" "}
-            <span className="block bg-gradient-to-r from-mint-light to-secondary bg-clip-text text-transparent">
+            <span className="block text-primary">
               Healthcare Partners
             </span>
           </h1>
 
-          <p className="text-white/80 mb-10 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mb-10 max-w-2xl mx-auto">
             Discover hospitals, diagnostics, medical equipment & more across the
             globe.
           </p>
 
-          <div className="glass rounded-2xl p-4 max-w-3xl mx-auto">
+          <div className="rounded-2xl p-4 max-w-3xl mx-auto border bg-card">
             <div className="flex flex-col md:flex-row gap-3">
               <div className="flex-1 relative">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -162,7 +143,7 @@ const Index = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search services..."
-                  className="w-full pl-12 py-4 rounded-xl bg-white/80"
+                  className="w-full pl-12 py-4 rounded-xl border"
                 />
               </div>
 
@@ -172,7 +153,7 @@ const Index = () => {
                   value={searchLocation}
                   onChange={(e) => setSearchLocation(e.target.value)}
                   placeholder="City or Country"
-                  className="w-full pl-12 py-4 rounded-xl bg-white/80"
+                  className="w-full pl-12 py-4 rounded-xl border"
                 />
               </div>
 
@@ -206,7 +187,7 @@ const Index = () => {
                 className="text-center group"
               >
                 <div className="transition-all duration-300 group-hover:scale-110">
-                  <div className="mx-auto mb-3 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
+                  <div className="mx-auto mb-3 w-16 h-16 rounded-2xl bg-primary flex items-center justify-center">
                     <cat.icon className="w-8 h-8 text-white" />
                   </div>
                   <p className="text-sm font-medium">{cat.name}</p>
@@ -228,26 +209,19 @@ const Index = () => {
             {featuredVendors.map((vendor) => (
               <div
                 key={vendor.name}
-                className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition"
+                className="bg-card rounded-2xl p-6 shadow-card"
               >
-                <img
-                  src={vendor.image}
-                  alt={vendor.name}
-                  className="h-48 w-full object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="font-bold text-lg mb-2">{vendor.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {vendor.description}
-                  </p>
-                  <div className="flex justify-between text-sm">
-                    <span>
-                      ⭐ {vendor.rating} ({vendor.reviews})
-                    </span>
-                    <span className="text-muted-foreground">
-                      {vendor.location}
-                    </span>
-                  </div>
+                <h3 className="font-bold text-lg mb-2">{vendor.name}</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  {vendor.description}
+                </p>
+                <div className="flex justify-between text-sm">
+                  <span>
+                    ⭐ {vendor.rating} ({vendor.reviews})
+                  </span>
+                  <span className="text-muted-foreground">
+                    {vendor.location}
+                  </span>
                 </div>
               </div>
             ))}
@@ -274,7 +248,7 @@ const Index = () => {
             {howItWorks.map((item) => (
               <div
                 key={item.title}
-                className="bg-card rounded-2xl p-6 border border-border"
+                className="bg-card rounded-2xl p-6 border"
               >
                 <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <item.icon className="w-7 h-7 text-primary" />

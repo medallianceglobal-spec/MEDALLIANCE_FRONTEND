@@ -1,3 +1,5 @@
+import Layout from '@/components/layout/Layout';
+
 import { useState } from 'react';
 import { ArrowLeft, ArrowRight, Globe, Heart, Shield, Users, Calendar, User } from 'lucide-react';
 
@@ -110,6 +112,7 @@ const BlogsPage = () => {
 
   if (selectedBlog) {
     return (
+      <Layout/>
       <div className="min-h-screen bg-background">
         {/* Blog Detail Header */}
         <div className="bg-gradient-to-r from-primary to-secondary text-white py-8">

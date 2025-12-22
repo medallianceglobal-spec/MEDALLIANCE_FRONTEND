@@ -238,7 +238,7 @@ const Index = () => {
       <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
         <div className="relative h-48 overflow-hidden bg-gradient-to-br from-orange-200 to-orange-300">
           <img
-            src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=400"
+            src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=400
             alt="HealthCare Plus"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
@@ -272,7 +272,7 @@ const Index = () => {
       <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
         <div className="relative h-48 overflow-hidden bg-gradient-to-br from-orange-200 to-orange-300">
           <img
-            src="https://images.unsplash.com/photo-1550572017-4870093e88d2?w=400"
+            src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=400
             alt="MediCare International"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />

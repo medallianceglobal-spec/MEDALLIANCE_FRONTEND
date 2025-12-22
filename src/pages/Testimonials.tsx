@@ -58,13 +58,13 @@ const TestimonialsSection = () => {
     <section className="py-24 bg-[#133B8A]/70 overflow-hidden">
       <div className="relative">
         {/* TOP TITLE */}
-              <div className="absolute top-6 left-1/2 -translate-x-1/2">
+              
+        <div className="flex items-center justify-center gap-6 px-4">
+          <div className="absolute top-6 left-1/2 -translate-x-1/2">
                 <span className="text-black text-3xl md:text-4xl font-bold tracking-wide">
                   Testimonials
                 </span>
               </div>
-        <div className="flex items-center justify-center gap-6 px-4">
-
           {/* LEFT IMAGE */}
           <div className="w-1/4 hidden md:block">
             <div className="rounded-3xl overflow-hidden aspect-[3/4]">

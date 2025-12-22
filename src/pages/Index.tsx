@@ -21,6 +21,7 @@ import Layout from "@/components/layout/Layout";
 import BlogsPreview from "./BlogsPreview";
 import herobanner from "@/assets/hero_banner.png";
 import { useState } from "react";
+import TestimonialsSection from "./Testimonials";
 
 /* ================= DATA ================= */
 
@@ -311,6 +312,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <TestimonialsSection/>
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">

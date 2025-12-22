@@ -199,12 +199,11 @@ const BlogsPreview = () => {
             </article>
           </div>
         </div>
-      </Layout>
+     
     );
   }
 
   return (
-    <Layout>
       <div className="min-h-screen bg-background">
         {/* Hero */}
         <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">

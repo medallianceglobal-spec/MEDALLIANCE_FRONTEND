@@ -276,20 +276,6 @@ const Index = () => {
       {/* BLOGS */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">
-              Blogs
-            </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              What we Do
-            </p>
-            <p className="text-muted-foreground max-w-3xl mx-auto mt-2">
-              MedAlliance helps people find the right healthcare, wherever they are. We connect patients with trusted hospitals and healthcare providers around the world, making it easier to explore verified options, understand what's right for them, and take the next step with confidence.
-            </p>
-            <p className="text-muted-foreground max-w-3xl mx-auto mt-2 font-medium">
-              Thoughtful Care. Trusted connections.
-            </p>
-          </div>
           <BlogsPreview />
         </div>
       </section>

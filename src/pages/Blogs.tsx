@@ -1,8 +1,5 @@
 import { useState } from 'react';
 import { ArrowLeft, ArrowRight, Globe, Heart, Shield, Users, Calendar, User } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-
-const navigate = useNavigate();
 
 const blogPosts = [
   {

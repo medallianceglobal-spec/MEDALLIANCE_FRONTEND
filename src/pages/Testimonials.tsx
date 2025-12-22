@@ -55,7 +55,7 @@ const TestimonialsSection = () => {
   const current = testimonials[currentIndex];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#0B1020] via-[#1E1B4B] to-[#3B0764] overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-[#121B3A] via-[#2A2D7C] to-[#5B21B6] overflow-hidden">
       <div className="relative">
         <div className="flex items-center justify-center gap-6 px-4">
 

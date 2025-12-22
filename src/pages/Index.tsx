@@ -27,6 +27,69 @@ const categories = [
   { name: "Funeral Services", icon: Cross },
 ];
 
+const featuredVendors = [
+  {
+    name: "Apollo Healthcare Solutions",
+    description:
+      "Premier multi-specialty hospital chain with cutting-edge technology",
+    rating: "4.9",
+    reviews: "2453",
+    location: "New York, USA",
+    image:
+      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400",
+  },
+  {
+    name: "MedTech Diagnostics",
+    description:
+      "Advanced diagnostic laboratory with AI-powered analysis",
+    rating: "4.8",
+    reviews: "1829",
+    location: "London, UK",
+    image:
+      "https://images.unsplash.com/photo-1581594549595-35f6edc7b762?w=400",
+  },
+  {
+    name: "Global Pharma Corp",
+    description:
+      "Leading pharmaceutical distributor with worldwide network",
+    rating: "4.7",
+    reviews: "1456",
+    location: "Singapore",
+    image:
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400",
+  },
+  {
+    name: "HealthCare Plus",
+    description:
+      "Comprehensive medical services with patient-first approach",
+    rating: "4.7",
+    reviews: "1321",
+    location: "Berlin, Germany",
+    image:
+      "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=400",
+  },
+  {
+    name: "MediCare International",
+    description:
+      "Global healthcare provider with strong international presence",
+    rating: "4.7",
+    reviews: "1210",
+    location: "Dubai, UAE",
+    image:
+      "https://images.unsplash.com/photo-1576602976047-174e57a47881?w=400",
+  },
+  {
+    name: "Premier Health Group",
+    description:
+      "Trusted healthcare network delivering excellence in care",
+    rating: "4.6",
+    reviews: "1180",
+    location: "Toronto, Canada",
+    image:
+      "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400",
+  },
+];
+
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
@@ -91,19 +154,20 @@ const Index = () => {
             </p>
           </div>
 
-          {/* All categories in grid - no scrolling */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
             {categories.map((cat) => (
               <Link
                 key={cat.name}
-                to={`/vendors?category=${cat.name.toLowerCase()}`}
+                to={`/vendors?category=${encodeURIComponent(
+                  cat.name.toLowerCase()
+                )}`}
                 className="text-center group"
               >
                 <div className="transition-all duration-300 group-hover:scale-110">
-                  <div className="mx-auto mb-2 md:mb-3 w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
-                    <cat.icon className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                  <div className="mx-auto mb-3 w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
+                    <cat.icon className="w-8 h-8 text-white" />
                   </div>
-                  <p className="text-xs md:text-sm font-medium">{cat.name}</p>
+                  <p className="text-sm font-medium">{cat.name}</p>
                 </div>
               </Link>
             ))}
@@ -112,310 +176,78 @@ const Index = () => {
       </section>
 
       {/* FEATURED PARTNERS */}
-<section className="py-20 bg-muted/30">
-  <div className="container mx-auto px-4">
-    <div className="flex justify-between items-center mb-10">
-      <div>
-        <h2 className="text-3xl md:text-4xl font-bold mb-2">
-          Featured Healthcare Partners
-        </h2>
-        <p className="text-muted-foreground">
-          Top-rated and verified healthcare vendors from around the world
-        </p>
-      </div>
-      <Link to="/vendors">
-        <Button variant="outline" className="hidden md:flex items-center gap-2">
-          View All Vendors
-          <ArrowRight className="w-4 h-4" />
-        </Button>
-      </Link>
-    </div>
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-10">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">
+                Featured Healthcare Partners
+              </h2>
+              <p className="text-muted-foreground">
+                Top-rated and verified healthcare vendors from around the world
+              </p>
+            </div>
+            <Link to="/vendors">
+              <Button variant="outline" className="hidden md:flex gap-2">
+                View All Vendors
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {/* Card 1 */}
-      <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
-        <div className="relative h-48 overflow-hidden bg-gray-100">
-          <img
-            src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400"
-            alt="Apollo Healthcare Solutions"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
-              <Shield className="w-3 h-3" />
-              Verified
-            </span>
-          </div>
-        </div>
-        <div className="p-6">
-          <h3 className="font-bold text-lg mb-2">Apollo Healthcare Solutions</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Premier multi-specialty hospital chain with cutting-edge technology
-          </p>
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-1">
-              <span className="text-yellow-500">⭐</span>
-              <span className="font-semibold">4.9</span>
-              <span className="text-muted-foreground">(2453)</span>
-            </div>
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>New York, USA</span>
-            </div>
-          </div>
-        </div>
-      </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredVendors.map((vendor) => (
+              <div
+                key={vendor.name}
+                className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={vendor.image}
+                    alt={vendor.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-emerald-500 text-white text-xs rounded-full flex items-center gap-1">
+                      <Shield className="w-3 h-3" />
+                      Verified
+                    </span>
+                  </div>
+                </div>
 
-      {/* Card 2 */}
-      <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
-        <div className="relative h-48 overflow-hidden bg-gray-100">
-          <img
-            src="https://images.unsplash.com/photo-1581594549595-35f6edc7b762?w=400"
-            alt="MedTech Diagnostics"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
-              <Shield className="w-3 h-3" />
-              Verified
-            </span>
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-2">{vendor.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {vendor.description}
+                  </p>
+                  <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center gap-1">
+                      <span className="text-yellow-500">⭐</span>
+                      <span className="font-semibold">{vendor.rating}</span>
+                      <span className="text-muted-foreground">
+                        ({vendor.reviews})
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1 text-muted-foreground">
+                      <MapPin className="w-4 h-4" />
+                      <span>{vendor.location}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-        <div className="p-6">
-          <h3 className="font-bold text-lg mb-2">MedTech Diagnostics</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Advanced diagnostic laboratory with AI-powered analysis
-          </p>
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-1">
-              <span className="text-yellow-500">⭐</span>
-              <span className="font-semibold">4.8</span>
-              <span className="text-muted-foreground">(1829)</span>
-            </div>
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>London, UK</span>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Card 3 */}
-      <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
-        <div className="relative h-48 overflow-hidden bg-gradient-to-br from-orange-200 to-orange-300">
-          <img
-            src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400"
-            alt="Global Pharma Corp"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
-              <Shield className="w-3 h-3" />
-              Verified
-            </span>
+          <div className="mt-8 text-center md:hidden">
+            <Link to="/vendors">
+              <Button variant="outline" className="flex gap-2 mx-auto">
+                View All Vendors
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </div>
         </div>
-        <div className="p-6">
-          <h3 className="font-bold text-lg mb-2">Global Pharma Corp</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Leading pharmaceutical distributor with worldwide network
-          </p>
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-1">
-              <span className="text-yellow-500">⭐</span>
-              <span className="font-semibold">4.7</span>
-              <span className="text-muted-foreground">(1456)</span>
-            </div>
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>Singapore</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Card 4 */}
-      <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
-        <div className="relative h-48 overflow-hidden bg-gradient-to-br from-orange-200 to-orange-300">
-          <img
-            src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=400
-            alt="HealthCare Plus"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
-              <Shield className="w-3 h-3" />
-              Verified
-            </span>
-          </div>
-        </div>
-        <div className="p-6">
-          <h3 className="font-bold text-lg mb-2">HealthCare Plus</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Comprehensive medical services with patient-first approach
-          </p>
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-1">
-              <span className="text-yellow-500">⭐</span>
-              <span className="font-semibold">4.7</span>
-              <span className="text-muted-foreground">(1456)</span>
-            </div>
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>Singapore</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Card 5 */}
-      <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
-        <div className="relative h-48 overflow-hidden bg-gradient-to-br from-orange-200 to-orange-300">
-          <img
-            src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=400"
-            alt="MediCare International"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
-              <Shield className="w-3 h-3" />
-              Verified
-            </span>
-          </div>
-        </div>
-        <div className="p-6">
-          <h3 className="font-bold text-lg mb-2">MediCare International</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Leading pharmaceutical distributor with worldwide network
-          </p>
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-1">
-              <span className="text-yellow-500">⭐</span>
-              <span className="font-semibold">4.7</span>
-              <span className="text-muted-foreground">(1456)</span>
-            </div>
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>Singapore</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Card 6 */}
-      <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
-        <div className="relative h-48 overflow-hidden bg-gradient-to-br from-orange-200 to-orange-300">
-          <img
-            src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=400"
-            alt="Premier Health Group"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
-              <Shield className="w-3 h-3" />
-              Verified
-            </span>
-          </div>
-        </div>
-        <div className="p-6">
-          <h3 className="font-bold text-lg mb-2">Premier Health Group</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Leading pharmaceutical distributor with worldwide network
-          </p>
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-1">
-              <span className="text-yellow-500">⭐</span>
-              <span className="font-semibold">4.7</span>
-              <span className="text-muted-foreground">(1456)</span>
-            </div>
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>Singapore</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Card 7 */}
-      <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
-        <div className="relative h-48 overflow-hidden bg-gradient-to-br from-orange-200 to-orange-300">
-          <img
-            src="https://images.unsplash.com/photo-1576602976047-174e57a47881?w=400"
-            alt="Advanced Medical Systems"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
-              <Shield className="w-3 h-3" />
-              Verified
-            </span>
-          </div>
-        </div>
-        <div className="p-6">
-          <h3 className="font-bold text-lg mb-2">Advanced Medical Systems</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Leading pharmaceutical distributor with worldwide network
-          </p>
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-1">
-              <span className="text-yellow-500">⭐</span>
-              <span className="font-semibold">4.7</span>
-              <span className="text-muted-foreground">(1456)</span>
-            </div>
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>Singapore</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Card 8 */}
-      <div className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group">
-        <div className="relative h-48 overflow-hidden bg-gradient-to-br from-orange-200 to-orange-300">
-          <img
-            src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400"
-            alt="LifeCare Solutions"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-emerald-500 text-white text-xs font-medium rounded-full flex items-center gap-1">
-              <Shield className="w-3 h-3" />
-              Verified
-            </span>
-          </div>
-        </div>
-        <div className="p-6">
-          <h3 className="font-bold text-lg mb-2">LifeCare Solutions</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Leading pharmaceutical distributor with worldwide network
-          </p>
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-1">
-              <span className="text-yellow-500">⭐</span>
-              <span className="font-semibold">4.7</span>
-              <span className="text-muted-foreground">(1456)</span>
-            </div>
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <MapPin className="w-4 h-4" />
-              <span>Singapore</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    {/* Mobile View All Button */}
-    <div className="mt-8 text-center md:hidden">
-      <Link to="/vendors">
-        <Button variant="outline" className="flex items-center gap-2 mx-auto">
-          View All Vendors
-          <ArrowRight className="w-4 h-4" />
-        </Button>
-      </Link>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">

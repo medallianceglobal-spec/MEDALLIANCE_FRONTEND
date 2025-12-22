@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { ArrowLeft, ArrowRight, Globe, Heart, Shield, Users, Calendar, User } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
+const navigate = useNavigate();
 
 const blogPosts = [
   {
@@ -293,10 +296,13 @@ const BlogsPage = () => {
             Discover healthcare providers worldwide or share your story with us.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium flex items-center justify-center gap-2 group">
-              Explore Vendors
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <button 
+  onClick={() => window.location.href = '/vendors'}
+  className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium flex items-center justify-center gap-2 group"
+>
+  Explore Vendors
+  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+</button>
             <button className="px-6 py-3 border border-border rounded-lg hover:bg-muted transition-colors font-medium">
               Contact Us
             </button>

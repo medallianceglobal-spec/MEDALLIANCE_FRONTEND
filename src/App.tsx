@@ -19,6 +19,7 @@ const Login = lazy(() => import("./pages/Login"));
 const VendorsPage = lazy(() => import("./pages/VendorsPage"));
 const VendorDetailsPage = lazy(() => import("./pages/VendorDetailsPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
+const Blogs = lazy(() => import("./pages/Blogs"));
 const VendorDashboardPage = lazy(() => import("./pages/VendorDashboardPage"));
 const NetworkAccessPage = lazy(() => import("./pages/NetworkAccessPage"));
 const RegisterCompanyPage = lazy(() => import("./pages/RegisterCompanyPage"));
@@ -115,7 +116,7 @@ const App = () => (
               <Route path="/vendors" element={<VendorsPage />} />
               <Route path="/vendors/:id" element={<VendorDetailsPage />} />
               <Route path="/about" element={<AboutPage />} />
-
+              <Route path="/blogs" element={<Blogs />} />
               <Route path="*" element={<NotFound />} />
 
             </Routes>

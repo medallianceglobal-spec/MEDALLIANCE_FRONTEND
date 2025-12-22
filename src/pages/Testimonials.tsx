@@ -57,14 +57,8 @@ const TestimonialsSection = () => {
   return (
     <section className="py-24 bg-[#133B8A]/70 overflow-hidden">
       <div className="relative">
-        {/* TOP TITLE */}
-              
         <div className="flex items-center justify-center gap-6 px-4">
-          <div className="absolute top-6 left-1/2 -translate-x-1/2">
-                <span className="text-black text-3xl md:text-4xl font-bold tracking-wide">
-                  Testimonials
-                </span>
-              </div>
+
           {/* LEFT IMAGE */}
           <div className="w-1/4 hidden md:block">
             <div className="rounded-3xl overflow-hidden aspect-[3/4]">
@@ -83,6 +77,14 @@ const TestimonialsSection = () => {
 
           {/* CENTER IMAGE */}
           <div className="w-full md:w-1/2 relative">
+
+            {/* TESTIMONIALS HEADING – ABOVE IMAGE */}
+            <div className="absolute -top-14 left-1/2 -translate-x-1/2 z-10">
+              <span className="text-white text-3xl md:text-4xl font-bold tracking-wide">
+                Testimonials
+              </span>
+            </div>
+
             <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-xl">
               <img
                 key={`center-${currentIndex}`}
@@ -94,18 +96,18 @@ const TestimonialsSection = () => {
 
             {/* TEXT BELOW IMAGE */}
             <div className="mt-10 text-center px-6">
-              <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">
                 What People Say
               </h2>
 
               <p
                 key={`quote-${currentIndex}`}
-                className="text-white max-w-xl mx-auto mb-8"
+                className="text-white/90 max-w-xl mx-auto mb-8"
               >
                 {current.quote}
               </p>
 
-              <button className="px-8 py-3 border border-gray-300 rounded-full text-gray-900 font-medium hover:bg-gray-100 transition">
+              <button className="px-8 py-3 border border-white/40 rounded-full text-white font-medium hover:bg-white/10 transition">
                 Read More
               </button>
 
@@ -120,8 +122,8 @@ const TestimonialsSection = () => {
                     }}
                     className={`h-2 rounded-full transition ${
                       index === currentIndex
-                        ? "bg-gray-900 w-6"
-                        : "bg-gray-300 w-2 hover:bg-gray-400"
+                        ? "bg-white w-6"
+                        : "bg-white/40 w-2 hover:bg-white/60"
                     }`}
                   />
                 ))}
@@ -131,14 +133,14 @@ const TestimonialsSection = () => {
             {/* ARROWS */}
             <button
               onClick={goToPrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border bg-white/80 flex items-center justify-center text-gray-800 hover:scale-110 transition"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/50 bg-white/10 flex items-center justify-center text-white hover:scale-110 transition"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
 
             <button
               onClick={goToNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border bg-white/80 flex items-center justify-center text-gray-800 hover:scale-110 transition"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/50 bg-white/10 flex items-center justify-center text-white hover:scale-110 transition"
             >
               <ChevronRight className="w-6 h-6" />
             </button>

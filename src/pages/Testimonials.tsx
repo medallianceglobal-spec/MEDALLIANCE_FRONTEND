@@ -182,7 +182,7 @@ const TestimonialsSection = () => {
         }
       `}</style>
       
-      <section className="py-24 bg-background overflow-hidden">
+      <section className="py-24 bg-gradient-to-r from-primary to-secondary overflow-hidden">
         <div className="relative">
           <div className="flex items-center justify-center gap-6 px-4">
 

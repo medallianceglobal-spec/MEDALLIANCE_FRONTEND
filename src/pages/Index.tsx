@@ -19,7 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import BlogsPreview from "./BlogsPreview";
-import herobanner from "../assets/hero-banner.png";
+import herobanner from "@/assets/hero-banner.png";
 import { useState } from "react";
 
 /* ================= DATA ================= */

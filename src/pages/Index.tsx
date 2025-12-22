@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
-import Blogs from "./Blogs";
+import BlogsPreview from "./BlogsPreview";
 import { useState } from "react";
 
 /* ================= DATA ================= */
@@ -248,7 +248,7 @@ const Index = () => {
       </section>
 
       {/* BLOGS */}
-      <Blogs />
+    <BlogsPreview/>
 
       {/* HOW MEDALLIANCE WORKS */}
       <section className="py-20 bg-background">

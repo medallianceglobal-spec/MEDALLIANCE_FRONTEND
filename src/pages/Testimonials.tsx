@@ -55,7 +55,7 @@ const TestimonialsSection = () => {
   const current = testimonials[currentIndex];
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-24 bg-gradient-to-r from-primary to-secondary overflow-hidden">
       <div className="relative">
         <div className="flex items-center justify-center gap-6 px-4">
 

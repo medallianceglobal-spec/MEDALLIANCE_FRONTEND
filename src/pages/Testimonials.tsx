@@ -55,7 +55,7 @@ const TestimonialsSection = () => {
   const current = testimonials[currentIndex];
 
   return (
-    <section className="py-24 bg-[#133B8A]/70 overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-[#0F2A66] via-[#133B8A] to-[#1E4FBF] overflow-hidden">
       <div className="relative">
         <div className="flex items-center justify-center gap-6 px-4">
 
@@ -78,7 +78,7 @@ const TestimonialsSection = () => {
           {/* CENTER IMAGE */}
           <div className="w-full md:w-1/2 relative">
 
-            {/* TESTIMONIALS HEADING – ABOVE IMAGE */}
+            {/* HEADING */}
             <div className="absolute -top-14 left-1/2 -translate-x-1/2 z-10">
               <span className="text-white text-3xl md:text-4xl font-bold tracking-wide">
                 Testimonials
@@ -94,7 +94,7 @@ const TestimonialsSection = () => {
               />
             </div>
 
-            {/* TEXT BELOW IMAGE */}
+            {/* TEXT + CONTROLS */}
             <div className="mt-10 text-center px-6">
               <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">
                 What People Say
@@ -107,9 +107,26 @@ const TestimonialsSection = () => {
                 {current.quote}
               </p>
 
-              <button className="px-8 py-3 border border-white/40 rounded-full text-white font-medium hover:bg-white/10 transition">
-                Read More
-              </button>
+              {/* BUTTON + ARROWS */}
+              <div className="flex items-center justify-center gap-6">
+                <button
+                  onClick={goToPrevious}
+                  className="w-11 h-11 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white/10 transition"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+
+                <button className="px-8 py-3 border border-white/40 rounded-full text-white font-medium hover:bg-white/10 transition">
+                  Read More
+                </button>
+
+                <button
+                  onClick={goToNext}
+                  className="w-11 h-11 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white/10 transition"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
 
               {/* DOTS */}
               <div className="flex justify-center gap-2 mt-6">
@@ -129,21 +146,6 @@ const TestimonialsSection = () => {
                 ))}
               </div>
             </div>
-
-            {/* ARROWS */}
-            <button
-              onClick={goToPrevious}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/50 bg-white/10 flex items-center justify-center text-white hover:scale-110 transition"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
-            <button
-              onClick={goToNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/50 bg-white/10 flex items-center justify-center text-white hover:scale-110 transition"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
           </div>
 
           {/* RIGHT IMAGE */}

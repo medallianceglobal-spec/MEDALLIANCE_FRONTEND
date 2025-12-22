@@ -212,7 +212,7 @@ const TestimonialsSection = () => {
                   className="w-full h-full object-cover animate-center-pop"
                 />
 
-                <div className="absolute inset-0 bg-[#133B8A]/60" />
+                {/* <div className="absolute inset-0 bg-[#133B8A]/60" /> */}
 
                 {/* CONTENT */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">

@@ -204,20 +204,36 @@ const BlogsPreview = () => {
   }
 
   return (
-      <div className="min-h-screen bg-background">
+      <div className="bg-background">
         {/* Hero */}
-        <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Latest Healthcare Insights
-          </h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Stay updated with the latest trends, innovations, and stories from
-            the world of healthcare.
-          </p>
+        <section className="py-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Latest Insights
+          </h2>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-muted-foreground mb-2">
+              What we Do
+            </p>
+            <p className="text-muted-foreground mb-2">
+              MedAlliance helps people find the right healthcare, wherever they are. We connect patients with trusted hospitals and healthcare providers around the world, making it easier to explore verified options, understand what's right for them, and take the next step with confidence.
+            </p>
+            <p className="text-muted-foreground font-medium">
+              Thoughtful Care. Trusted connections.
+            </p>
+          </div>
+        </section>
+
+        {/* Our Blogs Heading */}
+        <section className="pb-8">
+          <div className="container mx-auto px-4 text-center">
+            <h3 className="text-2xl md:text-3xl font-bold">
+              Our Blogs
+            </h3>
+          </div>
         </section>
 
         {/* Blog Cards */}
-        <section className="py-20">
+        <section className="pb-20">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 max-w-6xl">
             {blogPosts.map((post) => (
               <button

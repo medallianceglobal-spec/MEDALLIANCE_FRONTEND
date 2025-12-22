@@ -11,10 +11,17 @@ import {
   Plane,
   Ambulance,
   Cross,
+  ShieldCheck,
+  Info,
+  Headphones,
+  TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
+import Blogs from "./Blogs";
 import { useState } from "react";
+
+/* ================= DATA ================= */
 
 const categories = [
   { name: "Hospitals & Clinics", icon: Building2 },
@@ -90,6 +97,35 @@ const featuredVendors = [
   },
 ];
 
+const howItWorks = [
+  {
+    icon: ShieldCheck,
+    title: "Curated Healthcare Partners",
+    description:
+      "We onboard healthcare providers carefully, not aggressively.",
+  },
+  {
+    icon: Info,
+    title: "Clear Information, No Guesswork",
+    description:
+      "Patients get straightforward details to make informed decisions.",
+  },
+  {
+    icon: Headphones,
+    title: "Human Support When It Matters",
+    description:
+      "Real assistance, not automated healthcare confusion.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Growing Responsibly",
+    description:
+      "Scale follows trust—not the other way around.",
+  },
+];
+
+/* ================= COMPONENT ================= */
+
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
@@ -154,7 +190,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {categories.map((cat) => (
               <Link
                 key={cat.name}
@@ -178,70 +214,75 @@ const Index = () => {
       {/* FEATURED PARTNERS */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center mb-10">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">
-                Featured Healthcare Partners
-              </h2>
-              <p className="text-muted-foreground">
-                Top-rated and verified healthcare vendors from around the world
-              </p>
-            </div>
-            <Link to="/vendors">
-              <Button variant="outline" className="hidden md:flex gap-2">
-                View All Vendors
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Featured Healthcare Partners
+          </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredVendors.map((vendor) => (
               <div
                 key={vendor.name}
-                className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 group"
+                className="bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={vendor.image}
-                    alt={vendor.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-emerald-500 text-white text-xs rounded-full flex items-center gap-1">
-                      <Shield className="w-3 h-3" />
-                      Verified
-                    </span>
-                  </div>
-                </div>
-
+                <img
+                  src={vendor.image}
+                  alt={vendor.name}
+                  className="h-48 w-full object-cover"
+                />
                 <div className="p-6">
                   <h3 className="font-bold text-lg mb-2">{vendor.name}</h3>
                   <p className="text-sm text-muted-foreground mb-4">
                     {vendor.description}
                   </p>
-                  <div className="flex items-center justify-between text-sm">
-                    <div className="flex items-center gap-1">
-                      <span className="text-yellow-500">⭐</span>
-                      <span className="font-semibold">{vendor.rating}</span>
-                      <span className="text-muted-foreground">
-                        ({vendor.reviews})
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1 text-muted-foreground">
-                      <MapPin className="w-4 h-4" />
-                      <span>{vendor.location}</span>
-                    </div>
+                  <div className="flex justify-between text-sm">
+                    <span>⭐ {vendor.rating} ({vendor.reviews})</span>
+                    <span className="text-muted-foreground">
+                      {vendor.location}
+                    </span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-8 text-center md:hidden">
-            <Link to="/vendors">
-              <Button variant="outline" className="flex gap-2 mx-auto">
-                View All Vendors
+      {/* BLOGS */}
+      <Blogs />
+
+      {/* HOW MEDALLIANCE WORKS */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14">
+            <p className="text-primary uppercase tracking-wider text-sm mb-3">
+              HOW IT WORKS
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              How MedAlliance Works
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {howItWorks.map((item) => (
+              <div
+                key={item.title}
+                className="bg-card rounded-2xl p-6 border border-border"
+              >
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <item.icon className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link to="/about">
+              <Button className="gap-2">
+                More details
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>

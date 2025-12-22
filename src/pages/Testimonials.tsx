@@ -182,7 +182,7 @@ const TestimonialsSection = () => {
         }
       `}</style>
       
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-24 bg-navy/70 overflow-hidden">
         <div className="relative">
           <div className="flex items-center justify-center gap-6 px-4">
 

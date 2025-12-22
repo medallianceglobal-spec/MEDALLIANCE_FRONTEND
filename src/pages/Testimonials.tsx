@@ -60,7 +60,7 @@ const TestimonialsSection = () => {
         <div className="flex items-center justify-center gap-6 px-4">
 
           {/* LEFT IMAGE */}
-          <div className="w-1/4 hidden md:block opacity-50">
+          <div className="w-1/4 hidden md:block">
             <div className="rounded-3xl overflow-hidden aspect-[3/4]">
               <img
                 key={`left-${currentIndex}`}
@@ -146,7 +146,7 @@ const TestimonialsSection = () => {
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="w-1/4 hidden md:block opacity-50">
+          <div className="w-1/4 hidden md:block">
             <div className="rounded-3xl overflow-hidden aspect-[3/4]">
               <img
                 key={`right-${currentIndex}`}

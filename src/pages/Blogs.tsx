@@ -1,4 +1,5 @@
 import Layout from '@/components/layout/Layout';
+import OurMission from './OurMission.tsx';
 import { useState } from 'react';
 import {
   ArrowLeft,
@@ -252,6 +253,7 @@ const BlogsPage = () => {
           </div>
         </section>
       </div>
+      <OurMission />
     </Layout>
   );
 };

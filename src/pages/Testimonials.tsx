@@ -57,6 +57,12 @@ const TestimonialsSection = () => {
   return (
     <section className="py-24 bg-[#133B8A]/70 overflow-hidden">
       <div className="relative">
+        {/* TOP TITLE */}
+              <div className="absolute top-6 left-1/2 -translate-x-1/2">
+                <span className="text-black text-3xl md:text-4xl font-bold tracking-wide">
+                  Testimonials
+                </span>
+              </div>
         <div className="flex items-center justify-center gap-6 px-4">
 
           {/* LEFT IMAGE */}
@@ -84,13 +90,6 @@ const TestimonialsSection = () => {
                 alt="Featured testimonial"
                 className="w-full h-full object-cover animate-center-pop"
               />
-
-              {/* TOP TITLE */}
-              <div className="absolute top-6 left-1/2 -translate-x-1/2">
-                <span className="text-white text-3xl md:text-4xl font-bold tracking-wide">
-                  Testimonials
-                </span>
-              </div>
             </div>
 
             {/* TEXT BELOW IMAGE */}
@@ -101,7 +100,7 @@ const TestimonialsSection = () => {
 
               <p
                 key={`quote-${currentIndex}`}
-                className="text-gray-600 max-w-xl mx-auto mb-8"
+                className="text-white max-w-xl mx-auto mb-8"
               >
                 {current.quote}
               </p>

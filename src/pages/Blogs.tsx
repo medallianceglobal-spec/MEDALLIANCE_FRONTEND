@@ -294,7 +294,6 @@ const BlogsPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <button 
-  onClick={() => window.location.href = '/vendors'}
   className="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium flex items-center justify-center gap-2 group"
 >
   Explore Vendors

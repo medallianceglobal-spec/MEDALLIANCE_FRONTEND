@@ -1,5 +1,14 @@
 import { Link } from 'react-router-dom';
-import { Users, Building2, Globe, Award, Heart, Shield, ArrowRight, CheckCircle } from 'lucide-react';
+import {
+  Users,
+  Building2,
+  Globe,
+  Award,
+  Heart,
+  Shield,
+  ArrowRight,
+  CheckCircle,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Layout from '@/components/layout/Layout';
 
@@ -32,24 +41,28 @@ const teamMembers = [
 
 const values = [
   {
-    icon: '❤️',
+    icon: Heart,
     title: 'Patients Before Platforms',
-    description: 'Healthcare isn\'t a transaction. Every decision we make prioritizes patient safety, clarity, and confidence.',
+    description:
+      "Healthcare isn't a transaction. Every decision we make prioritizes patient safety, clarity, and confidence.",
   },
   {
-    icon: '🔍',
+    icon: Shield,
     title: 'Trust Through Transparency',
-    description: 'We believe trust is earned. Our partner onboarding focuses on verification, clear information, and ethical practices.',
+    description:
+      'We believe trust is earned. Our partner onboarding focuses on verification, clear information, and ethical practices.',
   },
   {
-    icon: '🌍',
+    icon: Globe,
     title: 'Thoughtful Global Expansion',
-    description: 'We grow intentionally—partner by partner, country by country—without compromising quality.',
+    description:
+      'We grow intentionally—partner by partner, country by country—without compromising quality.',
   },
   {
-    icon: '🛠️',
+    icon: Award,
     title: 'Built to Improve',
-    description: 'We listen closely, learn fast, and continuously refine the platform based on real patient and provider needs.',
+    description:
+      'We listen closely, learn fast, and continuously refine the platform based on real patient and provider needs.',
   },
 ];
 
@@ -102,20 +115,22 @@ const AboutPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Our Story</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                Our Story
+              </h2>
               <div className="space-y-4 text-muted-foreground">
-                <h3 className="text-2xl font-bold text-foreground mb-4">Why MedAlliance Exists</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-4">
+                  Why MedAlliance Exists
+                </h3>
                 <p>
                   MedAlliance was created with one simple belief: finding the right healthcare should never feel confusing, risky, or out of reach.
                 </p>
                 <p>
                   For patients, navigating hospitals, doctors, and treatment options—especially across countries—can be overwhelming. For healthcare providers, reaching the right patients globally is equally challenging.
                 </p>
+                <p>We built MedAlliance to bridge this gap.</p>
                 <p>
-                  We built MedAlliance to bridge this gap.
-                </p>
-                <p>
-                  Starting with a focused network of verified healthcare partners, we're creating a platform where trust, transparency, and human support come first. Every provider is carefully reviewed, and every interaction is designed to reduce uncertainty during critical healthcare moments.
+                  Starting with a focused network of verified healthcare partners, we're creating a platform where trust, transparency, and human support come first.
                 </p>
               </div>
             </div>
@@ -134,11 +149,14 @@ const AboutPage = () => {
       <section className="py-20 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Values</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Our Values
+            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               What Guides Everything We Build
             </p>
           </div>
+
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {values.map((value, index) => (
               <div
@@ -146,9 +164,13 @@ const AboutPage = () => {
                 className="bg-card rounded-2xl p-8 hover:shadow-card transition-shadow animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-5xl mb-4">{value.icon}</div>
-                <h3 className="font-bold text-foreground text-xl mb-3">{value.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+                <value.icon className="h-10 w-10 text-primary mb-4" />
+                <h3 className="font-bold text-foreground text-xl mb-3">
+                  {value.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {value.description}
+                </p>
               </div>
             ))}
           </div>

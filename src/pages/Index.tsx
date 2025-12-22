@@ -19,7 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import BlogsPreview from "./BlogsPreview";
-import herobanner from "@/assets/hero_banner.png";
+// import herobanner from "@/assets/hero_banner.png";
 import { useState } from "react";
 
 /* ================= DATA ================= */
@@ -137,9 +137,9 @@ const Index = () => {
       <section className="relative min-h-[90vh] flex items-center">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${herobanner})` }}
+          {/* style={{ backgroundImage: `url(${herobanner})` }} */}
         />
-        <div className="absolute inset-0 bg-navy/70 backdrop-blur-sm" />
+        {/* <div className="absolute inset-0 bg-navy/70 backdrop-blur-sm" /> */}
 
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">

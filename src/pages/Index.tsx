@@ -11,10 +11,6 @@ import {
   Plane,
   Ambulance,
   Cross,
-  ShieldCheck,
-  Info,
-  Headphones,
-  TrendingUp,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
@@ -22,6 +18,7 @@ import BlogsPreview from "./BlogsPreview";
 import herobanner from "@/assets/hero_banner.png";
 import { useState } from "react";
 import TestimonialsSection from "./Testimonials";
+import AboutUsHome from "./aboutUsHome";
 
 /* ================= DATA ================= */
 
@@ -99,33 +96,6 @@ const featuredVendors = [
   },
 ];
 
-const howItWorks = [
-  {
-    icon: ShieldCheck,
-    title: "Curated Healthcare Partners",
-    description:
-      "We onboard healthcare providers carefully, not aggressively.",
-  },
-  {
-    icon: Info,
-    title: "Clear Information, No Guesswork",
-    description:
-      "Patients get straightforward details to make informed decisions.",
-  },
-  {
-    icon: Headphones,
-    title: "Human Support When It Matters",
-    description:
-      "Real assistance, not automated healthcare confusion.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Growing Responsibly",
-    description:
-      "Scale follows trust—not the other way around.",
-  },
-];
-
 /* ================= COMPONENT ================= */
 
 const Index = () => {
@@ -136,16 +106,12 @@ const Index = () => {
     <Layout>
       {/* HERO */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        {/* Background image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${herobanner})` }}
         />
-
-        {/* Blue overlay + blur */}
         <div className="absolute inset-0 bg-navy/70 backdrop-blur-xs" />
 
-        {/* Content */}
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             Find Trusted{" "}
@@ -226,11 +192,17 @@ const Index = () => {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-3">
-           Trusted HealthCare, Worldwide
+            Trusted HealthCare, Worldwide
           </h2>
           <p className="text-muted-foreground mb-8 max-w-3xl">
             A curated network of verified medical partners across the globe.
           </p>
+            <Link to="/vendors">
+    <Button variant="outline" className="gap-2">
+      View all vendors
+      <ArrowRight className="w-4 h-4" />
+    </Button>
+  </Link>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredVendors.map((vendor) => (
@@ -259,9 +231,7 @@ const Index = () => {
                     {vendor.description}
                   </p>
                   <div className="flex justify-between text-sm">
-                    <span>
-                      ⭐ {vendor.rating}
-                    </span>
+                    <span>⭐ {vendor.rating}</span>
                     <span className="text-muted-foreground">
                       {vendor.location}
                     </span>
@@ -280,44 +250,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* HOW MEDALLIANCE WORKS */}
-      <section className="py-20 bg-muted/30 ">
-        <div className="container mx-auto px-4 -mt-10">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold">
-              How MedAlliance Works
-            </h2>
-          </div>
+      {/* ABOUT US / HOW IT WORKS */}
+      <AboutUsHome />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {howItWorks.map((item) => (
-              <div
-                key={item.title}
-                className="bg-card rounded-2xl p-6 border border-border"
-              >
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <item.icon className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link to="/about">
-              <Button className="gap-2">
-                More details
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <TestimonialsSection/>
+      <TestimonialsSection />
 
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">

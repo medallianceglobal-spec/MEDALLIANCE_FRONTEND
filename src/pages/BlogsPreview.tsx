@@ -212,28 +212,28 @@ const BlogsPreview = () => {
           </h1>
           <div className="max-w-3xl mx-auto">
             <p className="text-white/80 mb-2">
-              What we Do
+              Latest developments in HealthCare around the world. 
             </p>
-            <p className="text-white/80 mb-2">
+            {/* <p className="text-white/80 mb-2">
               MedAlliance helps people find the right healthcare, wherever they are. We connect patients with trusted hospitals and healthcare providers around the world, making it easier to explore verified options, understand what's right for them, and take the next step with confidence.
             </p>
             <p className="text-white/90 font-medium">
               Thoughtful Care. Trusted connections.
-            </p>
+            </p> */}
           </div>
         </section>
 
         {/* Our Blogs Heading */}
-        <section className="pb-8 mt-10">
+        {/* <section className="pb-8 mt-10">
           <div className="container mx-auto px-4 text-center">
             <h3 className="text-2xl md:text-3xl font-bold">
               Our Blogs
             </h3>
           </div>
-        </section>
+        </section> */}
 
         {/* Blog Cards */}
-        <section className="pb-20">
+        <section className="pb-20 mt-5">
           <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 max-w-6xl">
             {blogPosts.map((post) => (
               <button

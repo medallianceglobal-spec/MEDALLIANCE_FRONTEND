@@ -206,7 +206,7 @@ const BlogsPreview = () => {
   return (
       <div className="bg-background">
         {/* Hero */}
-        <section className="py-20 bg-gradient-to-r from-primary to-secondary text-white text-center">
+        <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             Latest Insights
           </h1>

@@ -191,18 +191,22 @@ const Index = () => {
       {/* FEATURED PARTNERS */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-3">
-            Trusted HealthCare, Worldwide
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-3xl">
-            A curated network of verified medical partners across the globe.
-          </p>
-            <Link to="/vendors">
-    <Button variant="outline" className="gap-2">
-      View all vendors
-      <ArrowRight className="w-4 h-4" />
-    </Button>
-  </Link>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-3">
+                Trusted HealthCare, Worldwide
+              </h2>
+              <p className="text-muted-foreground max-w-3xl">
+                A curated network of verified medical partners across the globe.
+              </p>
+            </div>
+            <Link to="/vendors" className="shrink-0">
+              <Button variant="outline" className="gap-2">
+                View all vendors
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredVendors.map((vendor) => (
@@ -251,7 +255,9 @@ const Index = () => {
       </section>
 
       {/* ABOUT US / HOW IT WORKS */}
-      <AboutUsHome />
+      <section className="py-12">
+        <AboutUsHome />
+      </section>
 
       <TestimonialsSection />
 

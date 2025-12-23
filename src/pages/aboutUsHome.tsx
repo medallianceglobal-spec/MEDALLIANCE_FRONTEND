@@ -86,7 +86,7 @@ const HowMedAllianceWorks = () => {
           ))}
         </div>
 
-      
+        {/* CTA */}
         <div className="mt-14 text-center">
           <Link
             to="/about"

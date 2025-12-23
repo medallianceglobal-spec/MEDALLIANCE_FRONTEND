@@ -30,16 +30,12 @@ const howItWorks = [
 
 const HowMedAllianceWorks = () => {
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-background -mt-12">
       <div className="container mx-auto px-4">
 
         {/* ABOUT US */}
         <div className="text-center max-w-4xl mx-auto mb-20">
-          <p className="text-primary uppercase tracking-wider text-5xl mb-3">
-            ABOUT US
-          </p>
-
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold -mt-20">
             HealthCare Simplified
           </h2>
 

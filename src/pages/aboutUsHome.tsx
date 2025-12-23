@@ -35,7 +35,7 @@ const HowMedAllianceWorks = () => {
 
         {/* ABOUT US */}
         <div className="text-center max-w-4xl mx-auto mb-20">
-          <p className="text-primary uppercase tracking-wider text-sm mb-3">
+          <p className="text-primary uppercase tracking-wider text-5xl mb-3">
             ABOUT US
           </p>
 

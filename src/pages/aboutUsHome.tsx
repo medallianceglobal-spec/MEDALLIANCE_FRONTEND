@@ -32,7 +32,31 @@ const HowMedAllianceWorks = () => {
   return (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        {/* Header */}
+
+        {/* ABOUT US */}
+        <div className="text-center max-w-4xl mx-auto mb-20">
+          <p className="text-primary uppercase tracking-wider text-sm mb-3">
+            ABOUT US
+          </p>
+
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            HealthCare Simplified
+          </h2>
+
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            MedAlliance helps people find the right healthcare, wherever they are.
+            We connect patients with trusted hospitals and healthcare providers
+            around the world, making it easier to explore verified options,
+            understand what’s right for them, and take the next step with
+            confidence.
+          </p>
+
+          <p className="font-medium text-foreground">
+            Thoughtful Care. Trusted connections.
+          </p>
+        </div>
+
+        {/* HOW IT WORKS HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <p className="text-primary uppercase tracking-wider text-sm mb-3">
             HOW IT WORKS
@@ -72,6 +96,7 @@ const HowMedAllianceWorks = () => {
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
+
       </div>
     </section>
   );

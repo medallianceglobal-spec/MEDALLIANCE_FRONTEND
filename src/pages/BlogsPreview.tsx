@@ -206,22 +206,17 @@ const BlogsPreview = () => {
   return (
       <div className="bg-background">
         {/* Hero */}
-        <section className="py-12 bg-gradient-to-r from-primary to-secondary text-white text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            Latest Insights
-          </h1>
-          <div className="max-w-3xl mx-auto">
-            <p className="text-white/80 mb-2">
-              Latest developments in HealthCare around the world. 
-            </p>
-            {/* <p className="text-white/80 mb-2">
-              MedAlliance helps people find the right healthcare, wherever they are. We connect patients with trusted hospitals and healthcare providers around the world, making it easier to explore verified options, understand what's right for them, and take the next step with confidence.
-            </p>
-            <p className="text-white/90 font-medium">
-              Thoughtful Care. Trusted connections.
-            </p> */}
-          </div>
-        </section>
+       <section className="py-10 flex justify-center bg-background">
+  <div className="w-full max-w-5xl bg-gradient-to-r from-primary to-secondary text-white text-center rounded-2xl px-6 py-10">
+    <h1 className="text-4xl md:text-5xl font-bold mb-4">
+      Latest Insights
+    </h1>
+
+    <p className="text-white/80 max-w-3xl mx-auto">
+      Latest developments in HealthCare around the world.
+    </p>
+  </div>
+</section>
 
         {/* Our Blogs Heading */}
         {/* <section className="pb-8 mt-10">

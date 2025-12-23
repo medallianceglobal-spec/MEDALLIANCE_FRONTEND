@@ -39,7 +39,7 @@ const HowMedAllianceWorks = () => {
             HealthCare Simplified
           </h2>
 
-          <p className="text-muted-foreground leading-relaxed mb-4">
+          <p className="text-muted-foreground leading-relaxed mt-5">
             MedAlliance helps people find the right healthcare, wherever they are.
             We connect patients with trusted hospitals and healthcare providers
             around the world, making it easier to explore verified options,
